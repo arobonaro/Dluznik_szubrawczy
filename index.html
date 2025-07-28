@@ -95,7 +95,9 @@
   </div>
 
   <div class="kafelek mniej-wazny">
-    <div class="wynik" id="odliczanie"></div>
+    <div class="wynik">
+      Odliczanie do <span class="gum-turbo">16 lipca 2032</span>:
+    </div>
     <div class="wynik" id="licznik"></div>
   </div>
 
@@ -127,39 +129,11 @@
         <span class="gum-turbo">${a} Gum Turbo</span>
       `;
 
-      // Szacowanie daty przekroczenia miliona
-      let przyszlaData = new Date();
-      let suma = 0;
-      let dzienPrzyrostu = 0;
-
-      while (suma < 1000000) {
-        const tydzien = Math.floor(dzienPrzyrostu / 7);
-        const reszta = dzienPrzyrostu % 7;
-        let dodatek = 0;
-        for (let i = 1; i <= tydzien; i++) {
-          dodatek += i;
-        }
-        dodatek *= 7;
-        dodatek += reszta * (tydzien + 1);
-        dodatek += 100;
-        suma = dodatek;
-        dzienPrzyrostu++;
-        przyszlaData.setDate(przyszlaData.getDate() + 1);
-      }
-
-      const opcje = { year: 'numeric', month: 'long', day: 'numeric' };
-      const dataTekst = przyszlaData.toLocaleDateString('pl-PL', opcje);
-
-      document.getElementById("odliczanie").innerHTML = `
-        Szacowany dzień przekroczenia<br>
-        <span class="gum-turbo">1 000 000 Gum Turbo</span><br>
-        to<br>
-        <span class="gum-turbo">${dataTekst}</span>
-      `;
+      const cel = new Date("2032-07-16T00:00:00");
 
       function aktualizujLicznik() {
         const teraz = new Date();
-        const roznica = przyszlaData - teraz;
+        const roznica = cel - teraz;
 
         if (roznica <= 0) {
           document.getElementById("licznik").innerHTML = `<span class="gum-turbo">Już przekroczone!</span>`;
@@ -172,7 +146,6 @@
         const sekundy = Math.floor((roznica / 1000) % 60);
 
         document.getElementById("licznik").innerHTML = `
-          Pozostało:<br>
           <span class="gum-turbo">${dni} dni, ${godziny}h ${minuty}m ${sekundy}s</span>
         `;
       }
