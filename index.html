@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kalkulator Gum</title>
-  <link rel="icon" type="image/png" href="icon.png" sizes="512x512" />
   <style>
     body {
       margin: 0;
@@ -39,6 +38,14 @@
       margin-bottom: 30px;
       animation: slideIn 0.8s ease-out forwards;
       transform: translateX(100vw);
+    }
+
+    .kafelek.mniej-wazny {
+      background: linear-gradient(to bottom right, #ffe8c2, #fff4e0);
+      padding: 25px;
+      box-shadow: none;
+      transform: none;
+      animation: none;
     }
 
     @keyframes slideIn {
@@ -87,8 +94,9 @@
     <div class="wynik" id="wynik"></div>
   </div>
 
-  <div class="kafelek">
+  <div class="kafelek mniej-wazny">
     <div class="wynik" id="odliczanie"></div>
+    <div class="wynik" id="licznik"></div>
   </div>
 
   <script>
@@ -97,59 +105,4 @@
         const dataStart = new Date(rok, miesiac - 1, dzien);
         const dzisiaj = new Date();
         const roznicaMs = dzisiaj - dataStart;
-        return Math.floor(roznicaMs / (1000 * 60 * 60 * 24));
-      }
-
-      const dni = dniOdDaty(2022, 4, 22);
-      const n = Math.floor(dni / 7);
-      const c = dni % 7;
-
-      let a = 0;
-      for (let i = 1; i <= n; i++) {
-        a += i;
-      }
-      a *= 7;
-      a += c * (n + 1);
-      a += 100;
-
-      document.getElementById("wynik").innerHTML = `
-        Kacper nie oddaje Gum Turbo od<br>
-        <span class="gum-turbo">${dni} dni</span><br>
-        a winny jest<br>
-        <span class="gum-turbo">${a} Gum Turbo</span>
-      `;
-
-      // Szacowanie kiedy 'a' przekroczy milion
-      const dzisiaj = new Date();
-      let przyszlaData = new Date(dzisiaj);
-      let suma = a;
-      let dzienPrzyrostu = dni + 1;
-
-      while (suma < 1000000) {
-        const tydzien = Math.floor(dzienPrzyrostu / 7);
-        const reszta = dzienPrzyrostu % 7;
-        let dodatek = 0;
-        for (let i = 1; i <= tydzien; i++) {
-          dodatek += i;
-        }
-        dodatek *= 7;
-        dodatek += reszta * (tydzien + 1);
-        dodatek += 100;
-        suma = dodatek;
-        dzienPrzyrostu++;
-        przyszlaData.setDate(przyszlaData.getDate() + 1);
-      }
-
-      const opcje = { year: 'numeric', month: 'long', day: 'numeric' };
-      const dataTekst = przyszlaData.toLocaleDateString('pl-PL', opcje);
-
-      document.getElementById("odliczanie").innerHTML = `
-        Szacowany dzień przekroczenia<br>
-        <span class="gum-turbo">1 000 000 Gum Turbo</span><br>
-        to<br>
-        <span class="gum-turbo">${dataTekst}</span>
-      `;
-    });
-  </script>
-</body>
-</html>
+        return Math.floor(roznicaMs
