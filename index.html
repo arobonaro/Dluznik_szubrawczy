@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Turbo gumy Kacpra</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kalkulator Gum</title>
   <style>
     body {
       margin: 0;
@@ -14,13 +14,14 @@
       flex-direction: column;
       align-items: center;
       height: 100vh;
+      text-align: center;
     }
 
     header {
       margin-top: 40px;
-      color: #ffffff;
       font-size: 2em;
       font-weight: bold;
+      color: #ffffff;
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
     }
 
@@ -30,8 +31,8 @@
       margin-top: 30px;
       border-radius: 15px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-      max-width: 600px;
-      text-align: center;
+      max-width: 90%;
+      width: 600px;
     }
 
     .wynik {
@@ -48,7 +49,7 @@
   </style>
 </head>
 <body>
-  <header>Raport o Gumach Turbo Kacpra</header>
+  <header>Kalkulator Gum</header>
 
   <div class="kafelek">
     <div class="wynik" id="wynik">Ładowanie raportu...</div>
@@ -65,4 +66,23 @@
 
       const dni = dniOdDaty(2022, 4, 22);
       const n = Math.floor(dni / 7);
-      const
+      const c = dni % 7;
+
+      let a = 0;
+      for (let i = 1; i <= n; i++) {
+        a += i;
+      }
+      a *= 7;
+      a += c * (n + 1);
+      a += 100;
+
+      document.getElementById("wynik").innerHTML = `
+        Kacper nie oddaje gum turbo od<br>
+        <span class="guma">${dni} dni</span><br>
+        a winny jest<br>
+        <span class="guma">${a} gum turbo</span>
+      `;
+    });
+  </script>
+</body>
+</html>
