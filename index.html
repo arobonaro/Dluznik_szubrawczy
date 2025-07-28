@@ -82,11 +82,11 @@
   <header>Kalkulator Gum</header>
 
   <div class="kafelek">
-    <div class="wynik" id="wynik">Ładowanie raportu...</div>
+    <div class="wynik" id="wynik"></div>
   </div>
 
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", function () {
       function dniOdDaty(rok, miesiac, dzien) {
         const dataStart = new Date(rok, miesiac - 1, dzien);
         const dzisiaj = new Date();
@@ -106,6 +106,14 @@
       a += c * (n + 1);
       a += 100;
 
-      document.getElementById("wynik").innerHTML = `
+      const wynikDiv = document.getElementById("wynik");
+      wynikDiv.innerHTML = `
         Kacper nie oddaje Gum Turbo od<br>
-        <span class="gum-turbo">${dni
+        <span class="gum-turbo">${dni} dni</span><br>
+        a winny jest<br>
+        <span class="gum-turbo">${a} Gum Turbo</span>
+      `;
+    });
+  </script>
+</body>
+</html>
