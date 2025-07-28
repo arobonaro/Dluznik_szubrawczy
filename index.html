@@ -96,7 +96,7 @@
 
   <div class="kafelek mniej-wazny">
     <div class="wynik">
-      Odliczanie do <span class="gum-turbo">16 lipca 2032</span>:
+      Odliczanie do <span class="gum-turbo">miliona Gum Turbo</span>:
     </div>
     <div class="wynik" id="licznik"></div>
   </div>
@@ -136,23 +136,4 @@
         const roznica = cel - teraz;
 
         if (roznica <= 0) {
-          document.getElementById("licznik").innerHTML = `<span class="gum-turbo">Już przekroczone!</span>`;
-          return;
-        }
-
-        const dni = Math.floor(roznica / (1000 * 60 * 60 * 24));
-        const godziny = Math.floor((roznica / (1000 * 60 * 60)) % 24);
-        const minuty = Math.floor((roznica / (1000 * 60)) % 60);
-        const sekundy = Math.floor((roznica / 1000) % 60);
-
-        document.getElementById("licznik").innerHTML = `
-          <span class="gum-turbo">${dni} dni, ${godziny}h ${minuty}m ${sekundy}s</span>
-        `;
-      }
-
-      aktualizujLicznik();
-      setInterval(aktualizujLicznik, 1000);
-    });
-  </script>
-</body>
-</html>
+          document.getElementById("licznik").innerHTML = `<span class="
