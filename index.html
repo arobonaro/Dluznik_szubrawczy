@@ -14,10 +14,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
       text-align: center;
       overflow-x: hidden;
+      padding-top: 40px;
     }
 
     header {
@@ -35,6 +36,7 @@
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
       max-width: 600px;
       width: 90%;
+      margin-bottom: 30px;
       animation: slideIn 0.8s ease-out forwards;
       transform: translateX(100vw);
     }
@@ -59,7 +61,7 @@
 
     @media (max-width: 600px) {
       .kafelek {
-        padding: 20px;
+        padding: 25px;
         max-width: 85%;
       }
 
@@ -85,6 +87,10 @@
     <div class="wynik" id="wynik"></div>
   </div>
 
+  <div class="kafelek">
+    <div class="wynik" id="odliczanie"></div>
+  </div>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       function dniOdDaty(rok, miesiac, dzien) {
@@ -106,12 +112,42 @@
       a += c * (n + 1);
       a += 100;
 
-      const wynikDiv = document.getElementById("wynik");
-      wynikDiv.innerHTML = `
+      document.getElementById("wynik").innerHTML = `
         Kacper nie oddaje Gum Turbo od<br>
         <span class="gum-turbo">${dni} dni</span><br>
         a winny jest<br>
         <span class="gum-turbo">${a} Gum Turbo</span>
+      `;
+
+      // Szacowanie kiedy 'a' przekroczy milion
+      const dzisiaj = new Date();
+      let przyszlaData = new Date(dzisiaj);
+      let suma = a;
+      let dzienPrzyrostu = dni + 1;
+
+      while (suma < 1000000) {
+        const tydzien = Math.floor(dzienPrzyrostu / 7);
+        const reszta = dzienPrzyrostu % 7;
+        let dodatek = 0;
+        for (let i = 1; i <= tydzien; i++) {
+          dodatek += i;
+        }
+        dodatek *= 7;
+        dodatek += reszta * (tydzien + 1);
+        dodatek += 100;
+        suma = dodatek;
+        dzienPrzyrostu++;
+        przyszlaData.setDate(przyszlaData.getDate() + 1);
+      }
+
+      const opcje = { year: 'numeric', month: 'long', day: 'numeric' };
+      const dataTekst = przyszlaData.toLocaleDateString('pl-PL', opcje);
+
+      document.getElementById("odliczanie").innerHTML = `
+        Szacowany dzień przekroczenia<br>
+        <span class="gum-turbo">1 000 000 Gum Turbo</span><br>
+        to<br>
+        <span class="gum-turbo">${dataTekst}</span>
       `;
     });
   </script>
