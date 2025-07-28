@@ -9,31 +9,49 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', 'Open Sans', sans-serif;
-      background: linear-gradient(to bottom, #66bfff, #e0f7ff);
+      background: linear-gradient(to bottom, #4dafff, #e0f7ff);
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       height: 100vh;
     }
 
+    header {
+      margin-top: 40px;
+      color: #ffffff;
+      font-size: 2em;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
     .kafelek {
-      background: linear-gradient(to bottom right, #c2e0f7, #b2e6d9);
-      padding: 30px;
+      background: linear-gradient(to bottom right, #c2e0f7, #82e6c3);
+      padding: 40px;
+      margin-top: 30px;
       border-radius: 15px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
       max-width: 600px;
       text-align: center;
     }
 
-    h2 {
+    .wynik {
       color: #225577;
-      font-size: 1.4em;
+      font-size: 1.5em;
+      line-height: 1.6;
+    }
+
+    .guma {
+      font-weight: bold;
+      color: #006699;
+      font-size: 1.7em;
     }
   </style>
 </head>
 <body>
+  <header>Raport o Gumach Turbo Kacpra</header>
+
   <div class="kafelek">
-    <h2 id="wynik">Ładowanie gum turbo...</h2>
+    <div class="wynik" id="wynik">Ładowanie raportu...</div>
   </div>
 
   <script>
@@ -47,19 +65,4 @@
 
       const dni = dniOdDaty(2022, 4, 22);
       const n = Math.floor(dni / 7);
-      const c = dni % 7;
-
-      let a = 0;
-      for (let i = 1; i <= n; i++) {
-        a += i;
-      }
-      a *= 7;
-      a += c * (n + 1);
-      a += 100;
-
-      document.getElementById("wynik").textContent =
-        `Kacper nie oddaje gum turbo od ${dni} dni, a winny jest ${a} gum turbo.`;
-    });
-  </script>
-</body>
-</html>
+      const
