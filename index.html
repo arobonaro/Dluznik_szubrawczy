@@ -4,11 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kalkulator Gum</title>
-
-  <!-- 🔗 Ikona aplikacji (favicon i manifest) -->
-  <link rel="icon" href="icon.png" type="image/png" />
-  <link rel="manifest" href="manifest.json" />
-
   <style>
     body {
       margin: 0;
@@ -32,7 +27,7 @@
     }
 
     .kafelek {
-      background: linear-gradient(to bottom right, #c2e0f7, #82e6c3);
+      background-color: #ffa94d;
       padding: 40px;
       border-radius: 15px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
@@ -41,33 +36,15 @@
     }
 
     .wynik {
-      color: #1c3f5f;
+      color: #2b2b2b;
       font-size: 1.7em;
       line-height: 1.7;
     }
 
     .gum-turbo {
       font-weight: bold;
-      color: #004080;
+      color: #2b2b2b;
       font-size: 1.9em;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        font-size: 1.8em;
-      }
-
-      .kafelek {
-        padding: 25px;
-      }
-
-      .wynik {
-        font-size: 1.2em;
-      }
-
-      .gum-turbo {
-        font-size: 1.4em;
-      }
     }
   </style>
 </head>
@@ -99,4 +76,13 @@
       a += c * (n + 1);
       a += 100;
 
-      document.getElementById("wynik").inner
+      document.getElementById("wynik").innerHTML = `
+        Kacper nie oddaje <span class="gum-turbo">Gum Turbo</span> od<br>
+        <span class="gum-turbo">${dni} dni</span><br>
+        a winny jest<br>
+        <span class="gum-turbo">${a} Gum Turbo</span>
+      `;
+    });
+  </script>
+</body>
+</html>
