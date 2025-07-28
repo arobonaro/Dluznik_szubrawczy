@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', 'Open Sans', sans-serif;
-      background: linear-gradient(to bottom, #d0eaff, #ffffff);
+      background: linear-gradient(to bottom, #99ccff, #e0f7ff);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,16 +17,16 @@
     }
 
     .kafelek {
-      background-color: #e6f2ff;
+      background: linear-gradient(to bottom right, #c2e0f7, #b2e6d9);
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
       max-width: 600px;
       text-align: center;
     }
 
     h2 {
-      color: #336699;
+      color: #225577;
       font-size: 1.4em;
     }
   </style>
@@ -52,12 +52,3 @@
     for (let i = 1; i <= n; i++) {
       a += i;
     }
-    a *= 7;
-    a += c * (n + 1);
-    a += 100;
-
-    document.getElementById("wynik").textContent =
-      `Kacper nie oddaje gum turbo od ${dni} dni, a winny jest ${a} gum turbo.`;
-  </script>
-</body>
-</html>
