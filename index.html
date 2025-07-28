@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', 'Open Sans', sans-serif;
-      background: linear-gradient(to bottom, #99ccff, #e0f7ff);
+      background: linear-gradient(to bottom, #66bfff, #e0f7ff);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -33,22 +33,33 @@
 </head>
 <body>
   <div class="kafelek">
-    <h2 id="wynik"></h2>
+    <h2 id="wynik">Ładowanie gum turbo...</h2>
   </div>
 
   <script>
-    function dniOdDaty(rok, miesiac, dzien) {
-      const dataStart = new Date(rok, miesiac - 1, dzien);
-      const dzisiaj = new Date();
-      const roznicaMs = dzisiaj - dataStart;
-      return Math.floor(roznicaMs / (1000 * 60 * 60 * 24));
-    }
+    window.addEventListener("DOMContentLoaded", () => {
+      function dniOdDaty(rok, miesiac, dzien) {
+        const dataStart = new Date(rok, miesiac - 1, dzien);
+        const dzisiaj = new Date();
+        const roznicaMs = dzisiaj - dataStart;
+        return Math.floor(roznicaMs / (1000 * 60 * 60 * 24));
+      }
 
-    const dni = dniOdDaty(2022, 4, 22);
-    const n = Math.floor(dni / 7);
-    const c = dni % 7;
+      const dni = dniOdDaty(2022, 4, 22);
+      const n = Math.floor(dni / 7);
+      const c = dni % 7;
 
-    let a = 0;
-    for (let i = 1; i <= n; i++) {
-      a += i;
-    }
+      let a = 0;
+      for (let i = 1; i <= n; i++) {
+        a += i;
+      }
+      a *= 7;
+      a += c * (n + 1);
+      a += 100;
+
+      document.getElementById("wynik").textContent =
+        `Kacper nie oddaje gum turbo od ${dni} dni, a winny jest ${a} gum turbo.`;
+    });
+  </script>
+</body>
+</html>
