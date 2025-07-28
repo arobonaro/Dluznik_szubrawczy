@@ -137,9 +137,10 @@
         <span class="gum-turbo" style="font-size:2.1em">${a} Gum Turbo</span>
       `;
 
-      // Nowy tekst: "Dług urósł dziś o:"
+      // Nowa wartość: Math.floor(dni / 7 + 1)
+      const dziennyPrzyrost = Math.floor(dni / 7 + 1);
       document.getElementById("dzienny-przyrost").innerHTML = `
-        <span class="gum-turbo">${c} Gum Turbo</span>
+        <span class="gum-turbo">${dziennyPrzyrost} Gum Turbo</span>
       `;
 
       const cel = new Date("2032-07-16T00:00:00");
