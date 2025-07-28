@@ -97,7 +97,7 @@
 
   <div class="kafelek mniej-wazny">
     <div class="wynik">
-      Dług rośnie codziennie o:
+      Dług urósł dziś o:
     </div>
     <div class="wynik" id="dzienny-przyrost"></div>
   </div>
@@ -137,10 +137,9 @@
         <span class="gum-turbo" style="font-size:2.1em">${a} Gum Turbo</span>
       `;
 
-      // Oblicz dzienny przyrost
-      const dziennyPrzyrost = ((a - 100) / dni).toFixed(2);
+      // Nowy tekst: "Dług urósł dziś o:"
       document.getElementById("dzienny-przyrost").innerHTML = `
-        <span class="gum-turbo">${dziennyPrzyrost} Gum Turbo / dzień</span>
+        <span class="gum-turbo">${c} Gum Turbo</span>
       `;
 
       const cel = new Date("2032-07-16T00:00:00");
